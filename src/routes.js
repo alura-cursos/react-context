@@ -3,30 +3,26 @@ import Login from "pages/Login";
 import Feira from "pages/Feira";
 import Carrinho from "pages/Carrinho";
 import { useState } from "react";
+import { UserContext } from "common/context/User";
 
-function Router(){
+function Router() {
   const [nome, setNome] = useState("");
-  const [saldo, setSaldo] = useState(0);    
+  const [saldo, setSaldo] = useState(0);
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <Switch>
-          <Route exact path='/'>
-            <Login 
-              nome={nome} 
-              setNome={setNome}
-              saldo={saldo}
-              setSaldo={setSaldo}
-            />
-          </Route>
-          <Route exact path='/feira'>
-            <Feira />
-          </Route>
-          <Route exact path='/carrinho'>
-            <Carrinho />
-          </Route>
+        <UserContext.Provider value={{ nome, setNome, saldo, setSaldo }}>
+          <Route exact path="/" component={Login} />
+        </UserContext.Provider>
+        <Route exact path="/feira">
+          <Feira />
+        </Route>
+        <Route exact path="/carrinho">
+          <Carrinho />
+        </Route>
       </Switch>
-      </BrowserRouter>
-  )    
+    </BrowserRouter>
+  );
 }
 
 export default Router;
