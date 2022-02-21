@@ -10,7 +10,10 @@ import {
   InputAdornment 
 } from '@material-ui/core';
 
-function Login() {
+import {useHistory} from 'react-router-dom';
+
+function Login({nome, setNome, saldo, setSaldo}) {
+  const history = useHistory();
   return (
     <Container>
       <Titulo>
@@ -22,6 +25,8 @@ function Login() {
         </InputLabel>
         <Input
           type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
         />
       </InputContainer>
       <InputContainer>
@@ -30,6 +35,8 @@ function Login() {
         </InputLabel>
         <Input
         type="number"
+        value={saldo}
+        onChange={(e) => setSaldo(e.target.value)}
         startAdornment={
           <InputAdornment position="start">
             R$
@@ -40,6 +47,7 @@ function Login() {
       <Button
         variant="contained"
         color="primary"
+        onClick={() => history.push('/feira')}
       >
         Avançar
       </Button>

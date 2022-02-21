@@ -3,7 +3,7 @@ import { StylesProvider } from '@material-ui/core/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from 'pages/Login';
+import Router from 'routes';
 
 const theme = createTheme({
   palette: {
@@ -20,7 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <Login />
+        <Router />
       </ThemeProvider>
     </StylesProvider>
   </React.StrictMode>,
